@@ -134,6 +134,7 @@
 .header__navbar-icon{
     font-size: 1.8rem;
     margin: 0 4px;
+    outline: nones;
 }
 .header__navbar-title--no-pointer{
     cursor: text;
@@ -815,7 +816,8 @@
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.04);
     align-items: center;
-    padding: 10px 36px;
+    padding: 8px 18px;
+    margin: 0 5px;
 }
 .home-filter-item{
     display: flex;
@@ -899,6 +901,7 @@
         -moz-user-select: none; /* Hỗ trợ cho Firefox */
         -ms-user-select: none; /* Hỗ trợ cho trình duyệt cũ của Microsoft */
     position: relative;
+    transition: all 0.3s ease; /* Thời gian và kiểu hiệu ứng */
 }
 .home-product-item:hover .home-product-item__btn{
     display: block;
