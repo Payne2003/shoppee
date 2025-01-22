@@ -13,7 +13,6 @@
 * {
     box-sizing: inherit;
 }
-
 html{
     /* HACK */
     font-size: 60.5%;
@@ -50,6 +49,12 @@ html{
 .grid__column-2-4{
     padding-right: 5px;
     width: 20%;
+}
+.grid__column-4{
+    width: 40%;
+}
+.grid__column-8{
+    width: 60%;
 }
 /* Animation */
 @keyframes fadeIn{
@@ -137,4 +142,34 @@ html{
 }
 .home-filter__page-btn:hover{
     background: #fdfdfd;
+}
+
+/* Panigtion */
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+.pagination-item--active.pagination-item__link{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}   
+.panigation-item{
+    margin: 0 20px;
+}
+.pagination-item__link{
+    --height: 30px;
+    display: block;
+    text-decoration: none;
+    color: #939393;
+    font-size: 1.6rem;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height) ;
+    text-align: center;
+    border-radius: 2px;
+}
+.pagination-item__icon{
+    font-size: 1.6rem;
 }
