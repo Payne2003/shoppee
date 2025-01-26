@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0">
     <title>Shopee</title>
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/reponsive.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.7.2-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +49,11 @@
                             </a>
                             <a href="" class="header__navbar-icon-link">
                                 <i class="header__navbar-icon fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="header__navbar-item-icon">
+                            <a href="" class="header__navbar-icon-link">
+                                <i class="fa-solid fa-ellipsis"></i>
                             </a>
                         </li>
                     </ul>
@@ -159,6 +165,9 @@
                                     </path>
                                 </g>
                             </svg>
+                        </a>
+                        <a href="/" class="header__navbar-link">
+                            <i class="header__navbar-link-icon fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
                     <div class="header__search">
@@ -276,13 +285,41 @@
                             <button class="header__cart-view-cart btn btn--primary">Xem giỏ hàng</button>
                         </div>
                     </div>
+                    <div class="header__list-type-product">
+                        <i class="header__list-type-product__icon fa-solid fa-filter"></i>
+                        Lọc
+                    </div>
+                    <div class="header__your-product">
+                        <i class="header__your-product__icon fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <div class="header__search-filter">
+                    <ul class="search-filter__list ">
+                        <li class="search-filter__item search-filter__item-link__separate">
+                            <a href="#" class="search-filter__item-link">Liên quan</a>
+                        </li>
+                        <li class="search-filter__item search-filter__item-link__separate">
+                            <a href="#" class="search-filter__item-link">Mới nhất</a>
+                        </li>
+                        <li class="search-filter__item search-filter__item-link__separate">
+                            <a href="#" class="search-filter__item-link">Bán chạy</a>
+                        </li>
+                        <li class="search-filter__item">
+                            <a href="#" class="search-filter__item-link">Giá
+                                <img class="search-filter__item-link-icon" src="./assets/img/funnel.png" alt="">
+                            </a>
+                        </li>
+                        <div class="animation_secret"></div>
+                    </ul>
                 </div>
             </div>
         </header>
         <div class="app__container">
             <div class="grid">
                 <div class="grid__row app__content">
-                    <div class="grid__column-2">
+                    <button id="app__container-btn__category" class="modal__btn-category">
+                    </button>
+                    <div class="grid__column-2 app__category">
                         <nav class="category">
                             <h3 class="category__heading">
                                 <i class="category__heading-icon fa-solid fa-list"></i>
@@ -1466,11 +1503,11 @@
     </footer>
     </div>
     <!-- Modal layout -->
-    <!-- <div class="modal"> -->
-    <!-- <div class="modal__overlay"></div>
-        <div class="modal__body"> -->
-    <!-- Register form -->
-    <!-- <div class="auth-form">
+    <div id="modal" class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+            <!-- Register form -->
+            <!-- <div class="auth-form">
                 <div class="auth-form__container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng ký</h3>
@@ -1510,8 +1547,8 @@
                     </a>
                 </div>
             </div> -->
-    <!-- Login form -->
-    <!-- <div class="auth-form">
+            <!-- Login form -->
+            <!-- <div class="auth-form">
                 <div class="auth-form__container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng nhập</h3>
@@ -1548,8 +1585,85 @@
                     </a>
                 </div>
             </div> -->
-    <!-- </div> -->
-    <!-- </div> -->
-</body>
 
-</html>
+            <!-- category modal -->
+            <div class="category-modal">
+                <span class="category-modal__heading">
+                    <i class="category-modal__heading-icon fa-solid fa-list"></i>
+                    Danh mục
+                </span>
+                <ul class="category-modal__list">
+                    <a href="" class="category-modal__link">
+                        <li class="category-modal__item ">Các mẫu chuột</li>
+                    </a>
+                    <a href="" class="category-modal__link">
+                        <li class="category-modal__item">Combo hồng HOT SALE</li>
+                    </a>
+                    <a href="" class="category-modal__link">
+                        <li class="category-modal__item">Bàn phím cơ chính hãng</li>
+                    </a>
+                    <a href="" class="category-modal__link">
+                        <li class="category-modal__item">Ghế Gaming E-Dra</li>
+                    </a>
+                    <a href="" class="category-modal__link">
+                        <li class="category-modal__item">Tai nghe Gaming chính hãng</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const items = document.querySelectorAll(".search-filter__item"); // Các mục `li`
+            const animationBar = document.querySelector(".animation_secret"); // Thanh chuyển động
+
+            items.forEach((item, index) => {
+                item.addEventListener("click", function () {
+                    // Xóa class 'active' khỏi tất cả các mục
+                    items.forEach((el) => el.classList.remove("active"));
+
+                    // Thêm class 'active' cho mục được nhấp
+                    this.classList.add("active");
+
+                    // Di chuyển thanh `.animation_secret` đến vị trí mục được nhấp
+                    animationBar.style.left = `${index * 25}%`;
+                });
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('modal'); // Modal tổng
+            const btn = document.getElementById('app__container-btn__category'); // Nút mở modal
+            const categoryModal = document.querySelector('.category-modal'); // Modal danh mục
+
+            // Hiển thị modal khi nhấn nút
+            btn.addEventListener('click', () => {
+                modal.style.display = 'block'; // Hiển thị modal và overlay
+                categoryModal.classList.remove('hide'); // Xóa animation ẩn nếu có
+                categoryModal.classList.add('show'); // Thêm animation hiện
+            });
+
+            // Ẩn modal khi nhấn vào overlay
+            overlay.addEventListener('click', () => {
+                categoryModal.classList.remove('show'); // Xóa animation hiện
+                categoryModal.classList.add('hide'); // Thêm animation ẩn
+                setTimeout(() => {
+                    modal.style.display = 'none'; // Ẩn modal sau khi animation hoàn thành
+                }, 500); // Đợi animation ẩn hoàn tất
+            });
+
+            // Ẩn modal khi nhấn phím Esc
+            window.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    categoryModal.classList.remove('show');
+                    categoryModal.classList.add('hide');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 500);
+                }
+            });
+        });
+
+    </script>
+</body>

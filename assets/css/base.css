@@ -51,7 +51,6 @@ html{
     padding-right: 5px;
     width: 20%;
 }
-
 .grid__column-4{
     width: 40%;
 }
@@ -83,7 +82,7 @@ html{
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
+    display: none;
 }
 .modal__overlay{
     position: absolute;
@@ -99,6 +98,9 @@ html{
     position: relative;
     z-index: 1;
     animation: growth linear 0.1s;
+}
+.category-modal{
+    display: none;
 }
 /* Button style */
 .btn{
@@ -152,6 +154,7 @@ html{
     align-items: center;
     justify-content: center;
     list-style: none;
+    padding-left: 0;
 }
 .pagination-item--active.pagination-item__link{
     color: var(--white-color);
